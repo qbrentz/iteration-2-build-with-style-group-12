@@ -19,6 +19,6 @@ What I asked the AI: I asked for a generic HTML5 starter template with a navigat
 How it helped and what I learned: The AI gave me a clean base layout with a functional navbar, which I then customized by adding my own Bootstrap cards, buttons, forms, and content. When the carousel cards overlapped or failed to show, the AI explained that each card needed to be wrapped inside a carousel item div with the right active class on the first item. I also learned how to keep the range slider label updated without interfering with Bootstrap’s default behavior. I made sure to understand every line of code by testing it in the browser and changing values to see how they affected the layout before putting it into my final pages.
 
 ## 5. Live Site Link
-* **Live URL:** guides.html: https://vcu-257.github.io/ugly-build-with-bootstrap-group-12/guides.html
-                credit-simulator.html: https://vcu-257.github.io/ugly-build-with-bootstrap-group-12/credit-simulator.html
-                money-tips.html: https://vcu-257.github.io/ugly-build-with-bootstrap-group-12/money-tips.html
+- **Live URL (Guides page):** https://vcu-257.github.io/ugly-build-with-bootstrap-group-12/guides.html
+- **Live URL (Credit Simulator page):** https://vcu-257.github.io/ugly-build-with-bootstrap-group-12/credit-simulator.html
+- **Live URL (Money Tips page):** https://vcu-257.github.io/ugly-build-with-bootstrap-group-12/money-tips.html

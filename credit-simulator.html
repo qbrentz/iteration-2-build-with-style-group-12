@@ -74,8 +74,18 @@
       </div>
       <div class="row g-4">
         <div class="col-12 col-md-6">
-          <label for="scoreRange" class="form-label">Credit Score: <span id="scoreLabel">700</span></label>
-          <input type="range" class="form-range" min="300" max="850" value="700" id="scoreRange" aria-valuemin="300" aria-valuemax="850" aria-valuenow="700">
+          <label for="scoreRange" class="form-label">
+            Credit Score: <span id="scoreLabel">700</span>
+          </label>
+          <input 
+            type="range" 
+            class="form-range" 
+            min="350" 
+            max="850" 
+            step="1" 
+            value="700" 
+            id="scoreRange"
+          >
         </div>
         <div class="col-12 col-md-6">
           <label for="loanAmount" class="form-label">Loan Amount</label>
@@ -103,30 +113,40 @@
     </footer>
 
     <script>
-      const scoreRange = document.getElementById('scoreRange');
-      const scoreLabel = document.getElementById('scoreLabel');
-      const calcBtn = document.getElementById('calcBtn');
-      const resultRate = document.getElementById('resultRate');
+      document.addEventListener('DOMContentLoaded', function () {
+        const scoreRange = document.getElementById('scoreRange');
+        const scoreLabel = document.getElementById('scoreLabel');
+        const calcBtn = document.getElementById('calcBtn');
+        const loanAmount = document.getElementById('loanAmount');
+        const resultRate = document.getElementById('resultRate');
 
-      function estimateRate(score) {
-        if (score >= 750) return 3.5;
-        if (score >= 700) return 5.0;
-        if (score >= 650) return 7.5;
-        if (score >= 600) return 10.0;
-        return 15.0;
-      }
+        function estimateRate(score) {
+          if (score >= 750) return 3.5;
+          if (score >= 700) return 5.0;
+          if (score >= 650) return 7.5;
+          if (score >= 600) return 10.0;
+          return 15.0;
+        }
 
-      scoreRange.addEventListener('input', () => {
-        scoreLabel.textContent = scoreRange.value;
-        scoreRange.setAttribute('aria-valuenow', scoreRange.value);
-      });
+        if (scoreRange && scoreLabel) {
+          scoreLabel.textContent = scoreRange.value;
+          scoreRange.setAttribute('aria-valuenow', scoreRange.value);
+          scoreRange.addEventListener('input', function () {
+            scoreLabel.textContent = scoreRange.value;
+            scoreRange.setAttribute('aria-valuenow', scoreRange.value);
+          });
+        }
 
-      calcBtn.addEventListener('click', () => {
-        const score = Number(scoreRange.value);
-        const amount = Number(document.getElementById('loanAmount').value) || 0;
-        const base = estimateRate(score);
-        const adj = amount > 50000 ? -0.5 : amount < 5000 ? 0.5 : 0;
-        resultRate.textContent = (base + adj).toFixed(2) + '%';
+        if (calcBtn && scoreRange && loanAmount && resultRate) {
+          calcBtn.addEventListener('click', function (event) {
+            event.preventDefault();
+            const score = Number(scoreRange.value) || 0;
+            const amount = Number(loanAmount.value) || 0;
+            const base = estimateRate(score);
+            const adj = amount > 50000 ? -0.5 : amount < 5000 ? 0.5 : 0;
+            resultRate.textContent = (base + adj).toFixed(2) + '%';
+          });
+        }
       });
     </script>
 
